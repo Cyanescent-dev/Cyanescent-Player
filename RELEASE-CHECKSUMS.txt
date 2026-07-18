@@ -1,0 +1,4 @@
+# Cyanescent Player release checksums
+# Algorithm: SHA-256
+
+051fd5c448b15817bee5c0aecc4245619e86546b7b774c52a938ef166ed9dbd6  Cyanescent-Player-0.9-Preview-macOS.zip

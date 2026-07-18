@@ -768,7 +768,7 @@ button {
 }
 
 /* ------------------------------------------------------------
-   10. VIDEO PLACEHOLDER
+   10. VIDEO
    ------------------------------------------------------------ */
 
 .video-container {
@@ -786,18 +786,7 @@ button {
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: brightness(0.45);
-}
-
-.video-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  background: hsla(220, 25%, 4%, 0.4);
+  background: var(--abyss);
 }
 
 @media (max-width: 767px) {
@@ -805,38 +794,6 @@ button {
     margin: 0 1rem;
     border-radius: 8px;
   }
-}
-
-.video-play-icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 2px solid hsla(185, 80%, 55%, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--cyan);
-  font-size: 2rem;
-  animation: play-glow 3s ease-in-out infinite;
-}
-
-@keyframes play-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 20px hsla(185, 80%, 50%, 0.15);
-    border-color: hsla(185, 80%, 55%, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 40px hsla(185, 80%, 50%, 0.3);
-    border-color: hsla(185, 80%, 55%, 0.7);
-  }
-}
-
-.video-overlay-text {
-  color: var(--ash);
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
 }
 
 /* ------------------------------------------------------------

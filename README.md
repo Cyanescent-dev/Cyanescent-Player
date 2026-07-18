@@ -1,134 +1,49 @@
-# Cyanescent Player — Release Website
+# Cyanescent Player
 
-The official one-page release website for the **Cyanescent Player 0.9 Preview**, a native macOS music player and audio-reactive visualiser.
+[Download the 0.9 Preview for macOS](https://github.com/Cyanescent-dev/Cyanescent-Player/releases/download/v0.9preview/Cyanescent-Player-0.9-Preview-macOS.zip) · [Visit the website](https://cyanescent-dev.github.io/Cyanescent-Player/) · [Release notes](https://github.com/Cyanescent-dev/Cyanescent-Player/releases/tag/v0.9preview)
 
-## Project Structure
+Cyanescent Player is a native macOS music player and audio-reactive visualiser for immersive generative worlds, adaptive preset journeys, and music-video creation.
 
-```
-Cyanescent Website/
-├── index.html              ← Single-page website
-├── style.css               ← All styles (no preprocessor)
-├── script.js               ← Minimal vanilla JavaScript
-├── README.md               ← This file
-├── screenshots/            ← Original source screenshots (do not modify)
-└── assets/
-    └── img/                ← Web-optimised copies used by the site
-```
+This is the public distribution and release website repository. It intentionally does not contain the application source code.
 
-## Local Preview
+## Current release
 
-No build step is needed. Serve the directory with any local HTTP server:
+**Cyanescent Player 0.9 Preview** is an early public release. It includes:
+
+- 20 curated audio-reactive visual presets
+- Adaptive and shuffle preset playback with smooth transitions
+- Custom preset playlists, importing, and management
+- Scion input with 10 synthesis and effect modes
+- Music-video export up to 1080p
+
+## Requirements
+
+- macOS 12 (Monterey) or later
+- Apple Silicon or Intel Mac
+
+The application is signed with a Developer ID certificate and notarised by Apple.
+
+## Install
+
+1. Download `Cyanescent-Player-0.9-Preview-macOS.zip` from the [latest preview release](https://github.com/Cyanescent-dev/Cyanescent-Player/releases/tag/v0.9preview).
+2. Open the ZIP file.
+3. Move **Cyanescent Player.app** to your Applications folder.
+4. Open Cyanescent Player.
+
+## Verify the download
+
+The SHA-256 checksum for the current release is in [RELEASE-CHECKSUMS.txt](RELEASE-CHECKSUMS.txt). In Terminal, after downloading the ZIP, run:
 
 ```bash
-# Python 3
-cd "Cyanescent Website"
-python3 -m http.server 8000
-
-# Then open http://localhost:8000
+shasum -a 256 Cyanescent-Player-0.9-Preview-macOS.zip
 ```
 
-Or use the VS Code Live Server extension, or any equivalent.
+Compare the result with the checksum file.
 
-> **Note:** Opening `index.html` directly from the filesystem (`file://`) may block some features in certain browsers. A local server is recommended.
+## Feedback and support
 
-## Replacing the Video Placeholder
+Cyanescent Player 0.9 is preview software and may contain bugs or compatibility issues. Please [open an issue](https://github.com/Cyanescent-dev/Cyanescent-Player/issues/new/choose) and include your Mac model, macOS version, what happened, reproduction steps, and screenshots or relevant error messages where possible.
 
-1. Place your final video file (e.g. `cyanescent-preview.mp4`) in the `assets/` directory.
-2. Open `index.html` and find the `<!-- VIDEO REPLACEMENT INSTRUCTIONS -->` comment in the `#video` section.
-3. Replace the `<img class="video-poster" ...>` element with:
+## Licence
 
-   ```html
-   <video class="video-poster"
-          poster="assets/img/video-poster.jpg"
-          controls
-          preload="metadata"
-          playsinline>
-     <source src="assets/cyanescent-preview.mp4" type="video/mp4">
-     Your browser does not support the video tag.
-   </video>
-   ```
-
-4. Remove the `<div class="video-overlay">...</div>` element.
-5. The poster image (`video-poster.jpg`) will display before the video plays.
-
-## Replacing Placeholder URLs
-
-All placeholder URLs are marked in the HTML with:
-- `href="#PLACEHOLDER-..."` — easy to search for
-- `data-placeholder="true"` — machine-identifiable
-
-Search for `PLACEHOLDER` in `index.html` to find all instances:
-
-| Placeholder | Purpose |
-|-------------|---------|
-| `#PLACEHOLDER-DOWNLOAD` | macOS download link |
-| `#PLACEHOLDER-GITHUB` | GitHub repository URL |
-| `#PLACEHOLDER-GITHUB-RELEASES` | GitHub releases page |
-| `#PLACEHOLDER-RELEASE-NOTES` | Release notes URL |
-| `#PLACEHOLDER-ISSUES` | Issue tracker URL |
-| `#PLACEHOLDER-LICENCE` | Licence page URL |
-| `#PLACEHOLDER-CREDITS` | Credits page URL |
-
-Also update:
-- `<meta property="og:url" ...>` — canonical URL
-- `<link rel="canonical" ...>` — canonical URL
-- `<meta property="og:image" ...>` — social preview image URL
-- Copyright year in the footer
-
-## Screenshot Assets
-
-The `screenshots/` directory contains the original unmodified screenshots. The `assets/img/` directory contains web-optimised JPEG copies used by the site.
-
-If you add or replace screenshots:
-1. Place originals in `screenshots/`
-2. Create optimised copies using `sips`:
-   ```bash
-   # For gallery images (1600px wide)
-   sips -Z 1600 -s format jpeg -s formatOptions 80 \
-     "screenshots/New Screenshot.png" \
-     --out "assets/img/new-image.jpg"
-
-   # For hero images (2400px wide)
-   sips -Z 2400 -s format jpeg -s formatOptions 82 \
-     "screenshots/New Screenshot.png" \
-     --out "assets/img/hero-new.jpg"
-   ```
-3. Update the `src` and `alt` attributes in `index.html`
-
-## GitHub Pages Deployment
-
-The site is designed to be served from the **repository root**.
-
-### Option A: Deploy from repository root
-
-1. Push this directory as the root of a GitHub repository
-2. Go to **Settings → Pages**
-3. Set **Source** to "Deploy from a branch"
-4. Select the **main** branch and **/ (root)** folder
-5. Save — the site will be available at `https://username.github.io/repo-name/`
-
-### Option B: Deploy from `/docs` folder
-
-1. Move the website files into a `/docs` folder in your repository
-2. Go to **Settings → Pages**
-3. Set source to **main** branch, **/docs** folder
-4. Save
-
-### Option C: GitHub Actions
-
-Use the default GitHub Pages action for static sites — no configuration needed.
-
-## Technical Notes
-
-- **No framework, no build system** — pure HTML, CSS, and vanilla JavaScript
-- **Fonts**: Outfit and Inter loaded from Google Fonts
-- **Accessibility**: Semantic HTML, skip link, keyboard navigation, ARIA attributes, focus states, `prefers-reduced-motion` support
-- **Performance**: Lazy-loaded images, declared aspect ratios, IntersectionObserver for scroll reveals and animation pausing
-- **Browser support**: Modern browsers (Chrome, Firefox, Safari, Edge). The site uses CSS custom properties, `backdrop-filter`, `aspect-ratio`, and `IntersectionObserver`.
-
-## Favicon
-
-The site currently uses a simple SVG data URI favicon. To replace it:
-1. Create your favicon files (`.ico`, `.png`, `.svg`)
-2. Place them in the root directory
-3. Update the `<link rel="icon" ...>` tag in `index.html`
+Cyanescent Player is provided for personal evaluation and use under the terms in [LICENSE](LICENSE). Third-party components remain subject to their respective licences.

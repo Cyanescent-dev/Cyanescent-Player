@@ -158,25 +158,4 @@
     heroObserver.observe(heroBg);
   }
 
-  /* ─── Pause Video Placeholder Glow When Not Visible ─── */
-
-  const videoPlayIcon = document.querySelector('.video-play-icon');
-
-  if (videoPlayIcon && !prefersReducedMotion.matches && 'IntersectionObserver' in window) {
-    const videoObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            videoPlayIcon.style.animationPlayState = 'running';
-          } else {
-            videoPlayIcon.style.animationPlayState = 'paused';
-          }
-        });
-      },
-      { threshold: 0 }
-    );
-
-    videoObserver.observe(videoPlayIcon);
-  }
-
 })();
