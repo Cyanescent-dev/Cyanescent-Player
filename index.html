@@ -274,15 +274,19 @@
           4. The poster image (video-poster.jpg) will show before play.
           ════════════════════════════════════════════════════════════
         -->
-        <img src="assets/img/video-poster.jpg"
-             alt="Cyanescent Player visual — vivid magenta and cyan spiral in fullscreen mode"
-             class="video-poster"
-             width="1920" height="1080">
+        <video class="video-poster"
+       poster="assets/img/video-poster.jpg"
+       controls
+       preload="metadata"
+       playsinline>
+  <source src="assets/promoplanetarps2-web-720p30.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
         <div class="video-overlay">
           <div class="video-play-icon" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           </div>
-          <span class="video-overlay-text">Preview film coming soon</span>
+          <span class="video-overlay-text">Preview video</span>
         </div>
       </div>
     </section>
